@@ -1,0 +1,9 @@
+1.select count(*) from film  JOIN film_list ON film.film_id = film_list.FID where special_features LIKE "%Deleted Scenes%" AND film_list.category = "DOCUMENTARY";
+
+2.select  count(*) from staff_list JOIN store ON staff_list.SID = store.store_id JOIN inventory ON inventory.store_id = staff_list.SID JOIN film_list ON film_list.FID = inventory.film_id where staff_list.name = "JON STEPHENS" AND film_list.category = "SCI-FI";
+
+3.select total_sales from sales_by_film_category where category = "ANIMATION";
+
+4.SELECT category.name, COUNT(category.name) as count from category JOIN film_category ON category.category_id = film_category.category_id JOIN inventory ON film_category.film_id = inventory.film_id JOIN rental ON inventory.inventory_id = rental.inventory_id JOIN customer_list ON customer_list.ID = rental.customer_id WHERE customer_list.name = "PATRICIA JOHNSON" GROUP BY category.name ORDER BY count desc LIMIT 3;
+
+5.SELECT COUNT(film.title) from film JOIN inventory ON film.film_id = inventory.film_id JOIN rental ON inventory.inventory_id = rental.inventory_id JOIN customer_list ON customer_list.ID = rental.customer_id WHERE customer_list.name = "SUSAN WILSON" AND film.rating = "R";
